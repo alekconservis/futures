@@ -1,0 +1,22 @@
+<h2>Products</h2>
+
+{% if product_list %}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Expiration</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in product_list %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.expires_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No products found.</p>
+{% endif %}
