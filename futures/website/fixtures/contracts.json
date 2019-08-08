@@ -5,7 +5,7 @@
     "fields": {
       "price": 99.99,
       "description": "A leaky bag of corn slurry",
-      "ends_at": "2020-08-16"
+      "end_date": "2020-08-16"
     }
   },
   {
@@ -14,7 +14,7 @@
     "fields": {
       "price": 1490,
       "description": "Raw corn husks",
-      "ends_at": "2019-10-04"
+      "end_date": "2019-10-04"
     }
   }
 ]

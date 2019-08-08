@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 
-from .models import Product, Contract
+from .models import Product
+from .models import Contract
 
 # Create your views here.
 def index(request):
@@ -15,11 +16,10 @@ def products(request):
     }
     return render(request, 'website/products.html', context)
 
-
 def contracts(request):
     contract_list = Contract.objects.order_by('-end_date')[:5]
     context = {
-        'contracts': contract_list
+        'contract_list': contract_list
     }
     return render(request, 'website/contracts.html', context)
 
