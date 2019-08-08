@@ -1,3 +1,6 @@
+{% extends "website/base_template.html" %}
+
+{% block body %}
 <h2>Contracts</h2>
 
 {% if contract_list %}
@@ -20,3 +23,4 @@
 {% else %}
   <p>No contracts found.</p>
 {% endif %}
+{% endblock %}
