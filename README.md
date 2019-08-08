@@ -12,7 +12,7 @@ then in the shell run
 
 ```
 from django.contrib.auth import get_user_model
-get_user_model().objects.create_user('bob', passwor='passMass123')
+get_user_model().objects.create_user('bob', password='passMass123')
 ```
 
 This should create a user.
