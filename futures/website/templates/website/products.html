@@ -9,6 +9,9 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Expiration</th>
+          <th scope="col">price</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Default Quantity</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +19,9 @@
           <tr>
             <td>{{ product.name }}</td>
             <td>{{ product.expires_at }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.unit }}</td>
+            <td>{{ product.default_quantity }}</td>
           </tr>
         {% endfor %}
       </tbody>
