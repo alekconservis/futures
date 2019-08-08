@@ -16,7 +16,7 @@ def login_view(request):
         if user is not None:
           print('-- user authenticated')
           login(request, user)
-          return redirect('home')
+          return redirect('product_list')
         else:
           print('-- not authenticated')
           return render(request, 'login.html',
@@ -25,11 +25,6 @@ def login_view(request):
         print('- get')
         return render(request, 'login.html',
           {"info": "Please login."})
-
-
-def home(request):
-  return render(request, 'home.html',
-                {"info": "..."})
 
 
 def index(request):
