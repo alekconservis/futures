@@ -16,7 +16,6 @@ class Product(models.Model):
     created_at = models.DateTimeField(default=now, blank=True)
     updated_at = models.DateTimeField(default=now, blank=True)
     name = models.CharField(max_length=200)
-    expires_at = models.DateField('expiration date')
     price = models.DecimalField(max_digits=12, decimal_places=2)
     unit = models.CharField(max_length=25, default='unit(s)')
     default_quantity = models.IntegerField('quantity', default=1)
