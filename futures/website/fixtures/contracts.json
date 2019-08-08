@@ -1,0 +1,20 @@
+[
+  {
+    "model": "website.contract",
+    "pk": 1,
+    "fields": {
+      "price": 99.99,
+      "description": "A leaky bag of corn slurry",
+      "ends_at": "2020-08-16"
+    }
+  },
+  {
+    "model": "website.contract",
+    "pk": 2,
+    "fields": {
+      "price": 1490,
+      "description": "Raw corn husks",
+      "ends_at": "2019-10-04"
+    }
+  }
+]
