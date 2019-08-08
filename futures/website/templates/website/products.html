@@ -8,14 +8,14 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
-          <th scope="col">Expiration</th>
+          <th scope="col">Price</th>
         </tr>
       </thead>
       <tbody>
         {% for product in product_list %}
           <tr>
             <td>{{ product.name }}</td>
-            <td>{{ product.expires_at }}</td>
+            <td>${{ product.price }} / {{ product.unit }}</td>
           </tr>
         {% endfor %}
       </tbody>

@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
@@ -15,7 +17,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(default=now, blank=True)
     name = models.CharField(max_length=200)
     expires_at = models.DateField('expiration date')
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     unit = models.CharField(max_length=25, default='unit(s)')
     default_quantity = models.IntegerField('quantity', default=1)
 

@@ -36,7 +36,7 @@ def index(request):
 
 
 def products(request):
-    product_list = Product.objects.order_by('-expires_at')[:5]
+    product_list = Product.objects.order_by('-name')
     context = {
         'product_list': product_list,
     }
@@ -49,4 +49,3 @@ def contracts(request):
         'contract_list': contract_list
     }
     return render(request, 'website/contracts.html', context)
-
