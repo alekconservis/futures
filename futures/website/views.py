@@ -28,6 +28,10 @@ def login_view(request):
           {"info": "Please login."})
 
 
+def account(request):
+    return render(request, 'website/account.html')
+
+
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
