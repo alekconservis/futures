@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 
 from .models import Product
+from .models import Contract
 
 
 def login_view(request):
@@ -28,12 +29,21 @@ def login_view(request):
 
 
 def index(request):
-  return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Hello, world. You're at the polls index.")
 
 
 def products(request):
-  product_list = Product.objects.order_by('-expires_at')[:5]
-  context = {
-      'product_list': product_list,
-  }
-  return render(request, 'website/products.html', context)
+    product_list = Product.objects.order_by('-expires_at')[:5]
+    context = {
+        'product_list': product_list,
+    }
+    return render(request, 'website/products.html', context)
+
+
+def contracts(request):
+    contract_list = Contract.objects.order_by('-end_date')[:5]
+    context = {
+        'contract_list': contract_list
+    }
+    return render(request, 'website/contracts.html', context)
+
