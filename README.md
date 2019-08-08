@@ -1,6 +1,22 @@
 # Application name here
 Description of application goes here...
 
+## Create a user
+
+From the shell run
+```
+./manage.py shell
+```
+
+then in the shell run
+
+```
+from django.contrib.auth import get_user_model
+get_user_model().objects.create_user('bob', passwor='passMass123')
+```
+
+This should create a user.
+
 ## Build the Development Environment
 To create your python environment simply run
 ```
