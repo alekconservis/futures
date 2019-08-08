@@ -38,9 +38,15 @@
     </nav>
 
     <div style="margin-top: 100px;" class="container">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
 
-        {% block body %}{% endblock %}
-
+      {% block body %}{% endblock %}
     </div>
 
     <!-- Bootstrap core JavaScript

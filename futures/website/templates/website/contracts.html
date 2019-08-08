@@ -16,6 +16,9 @@
         <tr>
           <td>{{ contract.product }}</td>
           <td>{{ contract.end_date }}</td>
+          <td>
+            <a href="/contracts/buy/{{ contract.id }}">Buy</a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>

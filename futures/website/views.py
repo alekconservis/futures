@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
-
+from django.contrib import messages
 from django.http import HttpResponse
 
 from .models import Product
 from .models import Contract
+from .models import User
 
 
 def login_view(request):
@@ -15,17 +16,15 @@ def login_view(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-          print('-- user authenticated')
-          login(request, user)
-          return redirect('product_list')
+            print('-- user authenticated')
+            login(request, user)
+            return redirect('product_list')
         else:
-          print('-- not authenticated')
-          return render(request, 'website/login.html',
-                        {"info": "Invalid username and password combination."})
+            print('-- not authenticated')
+            return render(request, 'website/login.html', {"info": "Invalid username and password combination."})
     else:
         print('- get')
-        return render(request, 'website/login.html',
-          {"info": "Please login."})
+        return render(request, 'website/login.html', {"info": "Please login."})
 
 
 def account(request):
@@ -50,4 +49,21 @@ def contracts(request):
         'contract_list': contract_list
     }
     return render(request, 'website/contracts.html', context)
+
+def buy_contract(request, contract_id):
+    contract = Contract.objects.get(pk=contract_id)
+    user = User.objects.get(pk=request.user.id)
+
+    contract.price = contract.product.price
+
+    if contract.seller:
+        contract.buyer = user
+    else:
+        contract.seller = user
+
+    messages.add_message(request, messages.SUCCESS, 'Successfully Bought Contract!')
+
+    return redirect(request, 'contract_list')
+
+
 
