@@ -37,6 +37,9 @@ def index(request):
 
 def products(request):
     product_list = Product.objects.order_by('-name')
+    for product in product_list:
+        # randomize product prices
+        product.fluctuate()
     context = {
         'product_list': product_list,
     }
