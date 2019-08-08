@@ -3,16 +3,18 @@
 {% block nav_bar %}{% endblock %}
 
 {% block body %}
-    <h1>Login</h1>
-    <form name="login-form" method="post">
+<div class="card card-body" style="max-width: 20rem;">
+    <h4 class="card-title">Login</h4>
+    <form name="login-form" method="post" style="width: 100%;">
         {% csrf_token %}
         Username:<br>
-        <input name="username" type="text"><br>
+        <input name="username" type="text" style="width: 100%;"><br>
         Password:<br>
-        <input name="password" type="password"><br>
+        <input name="password" type="password" style="width: 100%;"><br>
         <br>
-        <input class="btn btn-primary" type="button" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit" style="width: 100%;">
     </form>
     <p>info:</p>
     <p>{{ info }}</p>
+</div>
 {% endblock %}
