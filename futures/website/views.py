@@ -23,7 +23,6 @@ def login_view(request):
           return render(request, 'website/login.html',
                         {"info": "Invalid username and password combination."})
     else:
-        print('- get')
         return render(request, 'website/login.html',
           {"info": "Please login."})
 
