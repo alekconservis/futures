@@ -4,4 +4,4 @@ __pycache__
 .pyc
 .idea
 .vscode
-*.sqlite3
+futures/db.sqlite3

@@ -1,0 +1,20 @@
+[
+  {
+    "model": "website.product",
+    "pk": 1,
+    "fields": {
+      "name": "Spent grains",
+      "price": 11.00,
+      "expires_at": "2019-08-16"
+    }
+  },
+  {
+    "model": "website.product",
+    "pk": 2,
+    "fields": {
+      "name": "Old lettuce",
+      "price": 5.00,
+      "expires_at": "2019-08-11"
+    }
+  }
+]
