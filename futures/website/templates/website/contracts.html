@@ -1,0 +1,22 @@
+<h2>Contracts</h2>
+
+{% if contract_list %}
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contract in contract_list %}
+        <tr>
+          <td>Product goes here</td>
+          <td>{{ contract.end_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No contracts found.</p>
+{% endif %}

@@ -12,6 +12,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Contract',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('price', models.DecimalField(decimal_places=2, max_digits=6)),
+                ('description', models.CharField(max_length=255)),
+                ('end_date', models.DateField()),
+            ]
+        ),
+        migrations.CreateModel(
             name='Product',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
