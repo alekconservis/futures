@@ -2,6 +2,14 @@
 
 {% block body %}
     <h2>Account Info</h2>
-    <p>Username: {{ request.user.username }}</p>
-    <p>cash_balance: {{ request.user.cash_balance }}</p>
+    <table>
+        <tr>
+            <td>Username</td>
+            <td>{{ request.user.username }}</td>
+        </tr>
+        <tr>
+            <td>cash_balance</td>
+            <td>{{ request.user.cash_balance }}</td>
+        </tr>
+    </table>
 {% endblock %}
