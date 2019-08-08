@@ -1,18 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
 
 
-def login(request):
+def login_view(request):
     if request.method == "POST":
-        print('- post')
         username = request.POST["username"]
         password = request.POST["password"]
-        print(f'-- username: {username}')
-        print(f'-- password: {password}')
-        return render(request, 'login.html',
-                      {"item": "hello from django app",
-                       "username": username})
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            print('-- user authenticated')
+            login(request, user)
+            return redirect('home')
+        else:
+            print('-- not authenticated')
+            return render(request, 'login.html',
+                          {"info": "Invalid username and password combination."})
     else:
         print('- get')
         return render(request, 'login.html',
-                        {"item": "hello from django app"})
+            {"info": "Please login."})
+
+
+def home(request):
+    return render(request, 'home.html',
+                  {"info": "..."})
