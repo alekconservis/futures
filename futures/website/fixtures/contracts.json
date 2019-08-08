@@ -3,6 +3,7 @@
     "model": "website.contract",
     "pk": 1,
     "fields": {
+      "product": 1,
       "price": 99.99,
       "description": "A leaky bag of corn slurry",
       "end_date": "2020-08-16"
@@ -12,6 +13,7 @@
     "model": "website.contract",
     "pk": 2,
     "fields": {
+      "product": 2,
       "price": 1490,
       "description": "Raw corn husks",
       "end_date": "2019-10-04"

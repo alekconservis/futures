@@ -5,3 +5,5 @@ __pycache__
 .idea
 .vscode
 futures/db.sqlite3
+futures/website/migrations/*
+!futures/website/migrations/__init__.py
