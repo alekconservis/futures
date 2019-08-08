@@ -8,6 +8,8 @@
     <thead>
       <tr>
         <th>Product</th>
+        <th>Buyer</th>
+        <th>Seller</th>
         <th>Delivery Date</th>
       </tr>
     </thead>
@@ -15,6 +17,8 @@
       {% for contract in contract_list %}
         <tr>
           <td>{{ contract.product }}</td>
+          <td>{{ contract.buyer }}</td>
+          <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
         </tr>
       {% endfor %}

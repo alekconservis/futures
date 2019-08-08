@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
 
-
 class User(AbstractUser):
     created_at = models.DateTimeField(default=now, blank=True)
     updated_at = models.DateTimeField(default=now, blank=True)
@@ -24,6 +23,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def fluctuate(self):
+        # set PRICE to random value within certain range of original value
+        offset = random.randrange(-50, 50, 1)
+        self.price = self.price + round(Decimal(offset / 100), 2)
 
 
 class Contract(models.Model):

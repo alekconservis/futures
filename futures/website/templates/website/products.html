@@ -9,6 +9,7 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
           <tr>
             <td>{{ product.name }}</td>
             <td>${{ product.price }} / {{ product.unit }}</td>
+            <td><a href="/products/{{ product.id }}/contracts/new">[ + ]</a></td>
           </tr>
         {% endfor %}
       </tbody>
