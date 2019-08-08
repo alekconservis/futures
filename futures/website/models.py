@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
 
+
 class User(AbstractUser):
     created_at = models.DateTimeField(default=now, blank=True)
     updated_at = models.DateTimeField(default=now, blank=True)
