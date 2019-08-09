@@ -8,7 +8,10 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Expiration</th>
           <th scope="col">Price</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Default Quantity</th>
           <th></th>
         </tr>
       </thead>
@@ -16,7 +19,10 @@
         {% for product in product_list %}
           <tr>
             <td>{{ product.name }}</td>
-            <td>${{ product.price }} / {{ product.unit }}</td>
+            <td>{{ product.expires_at }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.unit }}</td>
+            <td>{{ product.default_quantity }}</td>
             <td><a href="/products/{{ product.id }}/contracts/new">[ + ]</a></td>
           </tr>
         {% endfor %}
