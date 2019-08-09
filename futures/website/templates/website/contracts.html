@@ -24,7 +24,9 @@
           <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
           <td>
-            <a href="{% url 'buy_contract' contract.id %}">{{ contract.purchase_action }}</a>
+            <button type="button" class="table-button btn">
+              <a href="{% url 'buy_contract' contract.id %}">{{ contract.purchase_action }}</a>
+            </button>
           </td>
         </tr>
       {% endfor %}
