@@ -1,7 +1,9 @@
+import random
+from decimal import Decimal
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
-
 
 class User(AbstractUser):
     created_at = models.DateTimeField(default=now, blank=True)
@@ -14,13 +16,17 @@ class Product(models.Model):
     created_at = models.DateTimeField(default=now, blank=True)
     updated_at = models.DateTimeField(default=now, blank=True)
     name = models.CharField(max_length=200)
-    expires_at = models.DateField('expiration date')
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     unit = models.CharField(max_length=25, default='unit(s)')
     default_quantity = models.IntegerField('quantity', default=1)
 
     def __str__(self):
         return self.name
+
+    def fluctuate(self):
+        # set PRICE to random value within certain range of original value
+        offset = random.randrange(-50, 50, 1)
+        self.price = self.price + round(Decimal(offset / 100), 2)
 
 
 class Contract(models.Model):

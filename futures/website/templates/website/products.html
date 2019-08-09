@@ -12,6 +12,7 @@
           <th scope="col">price</th>
           <th scope="col">Unit</th>
           <th scope="col">Default Quantity</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
             <td>{{ product.price }}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.default_quantity }}</td>
+            <td><a href="/products/{{ product.id }}/contracts/new">[ + ]</a></td>
           </tr>
         {% endfor %}
       </tbody>

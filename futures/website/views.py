@@ -6,6 +6,7 @@ from django.http import HttpResponse
 
 from .models import Product
 from .models import Contract
+from .models import User
 
 
 def login_view(request):
@@ -34,7 +35,10 @@ def index(request):
 
 
 def products(request):
-    product_list = Product.objects.order_by('-expires_at')[:5]
+    product_list = Product.objects.order_by('-name')
+    for product in product_list:
+        # randomize product prices
+        product.fluctuate()
     context = {
         'product_list': product_list,
     }
@@ -42,9 +46,35 @@ def products(request):
 
 
 def contracts(request):
-    contract_list = Contract.objects.order_by('-end_date')[:5]
+    if request.method == "POST":
+        contract = Contract(
+            # quantity = request.POST["quantity"],
+            price = request.POST["price"],
+            end_date = request.POST["expires_at"],
+            product_id = request.POST["product_id"],
+        )
+
+        user = User.objects.get(id=request.user.id)
+        if request.POST["type"] == "buy":
+            contract.buyer = user
+        else:
+            contract.seller = user
+
+        contract.save()
+        return redirect("contract_list")
+
+    else:
+        contract_list = Contract.objects.order_by('-end_date')
+        context = {
+            'contract_list': contract_list
+        }
+        return render(request, 'website/contracts.html', context)
+
+
+def create_contract(request, id):
+    product = Product.objects.get(pk=id)
     context = {
-        'contract_list': contract_list
+        'product': product,
     }
-    return render(request, 'website/contracts.html', context)
+    return render(request, 'website/create_contract.html', context)
 
