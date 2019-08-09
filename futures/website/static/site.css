@@ -1,0 +1,53 @@
+*, body, html{
+    color:white;
+}
+.base-background{
+    background-color: #001938;
+    margin-bottom: 0px;
+}
+.ttc-button {
+    background-color: #DDCF93;
+    color: #001938;
+}
+.ttc-button:hover {
+    background-color: #9BCC9E;
+}
+.ttc-button:focus {
+    background-color: #F61067;
+}
+*, body, html {
+    color: #DDCF93;
+}
+h1{
+    margin-bottom: 30px;
+}
+.text-field {
+    margin-bottom: 20px;
+    color: black;
+    border-radius: 5px;
+}
+.table th{
+    border-top: none;
+}
+tr:first-child {}
+.table-body:nth-child(even) {
+    background-color: rgba(214, 191, 92, 0.2);
+}
+.table-body:nth-child(odd) {
+    background-color: rgba(214, 191, 92, 0.1);
+}
+.table-button{
+    border: 2px solid #DDCF93;
+    color: black;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+.table-button a{
+    color: #DDCF93;
+}
+td {
+    color: white;
+}
+.product-name {
+    color: #DDCF93;
+}
