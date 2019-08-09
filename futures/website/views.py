@@ -67,7 +67,7 @@ def products(request):
 def contracts(request):
     if request.method == "POST":
         contract = Contract(
-            # quantity = request.POST["quantity"],
+            quantity = request.POST["quantity"],
             price = request.POST["price"],
             end_date = request.POST["expires_at"],
             product_id = request.POST["product_id"],

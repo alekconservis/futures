@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
         <th scope="col">Price</th>
         <th scope="col">Buyer</th>
         <th scope="col">Seller</th>
@@ -19,7 +20,8 @@
       {% for contract in contract_list %}
         <tr class="table-body">
           <td class="product-name">{{ contract.product }}</td>
-          <td>${{ contract.price }}</td>
+          <td>{{ contract.quantity }} {{ contract.product.unit }}(s)</td>
+          <td>${{ contract.total_price }}</td>
           <td>{{ contract.buyer }}</td>
           <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
