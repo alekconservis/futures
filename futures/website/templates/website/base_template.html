@@ -99,12 +99,24 @@
         color: black;
         border-radius: 5px;
     }
+    .table th{
+        border-top: none;
+    }
     tr:first-child {}
-    tr:nth-child(even) {
+    .table-body:nth-child(even) {
         background-color: rgba(214, 191, 92, 0.2);
     }
-    tr:nth-child(odd) {
+    .table-body:nth-child(odd) {
         background-color: rgba(214, 191, 92, 0.1);
+    }
+    .table-button{
+        border: 2px solid #DDCF93;
+        color: black;
+        padding-top:0px;
+        padding-bottom:0px;
+    }
+    .table-button:a{
+        color: #DDCF93;
     }
 </style>
 
