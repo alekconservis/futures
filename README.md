@@ -1,7 +1,8 @@
 # 🗑 ➡ ️💸 Trash to Cash
 
-## Summary
 A futures marketplace for buying and selling food waste
+
+## Summary
 
 ### What are the problems it will solve?
 - Sustainability / good for environment
