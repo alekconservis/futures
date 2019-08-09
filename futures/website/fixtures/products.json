@@ -16,5 +16,32 @@
       "price": 5.00,
       "unit": "lb"
     }
+  },
+  {
+    "model": "website.product",
+    "pk": 3,
+    "fields": {
+      "name": "Irregular produce",
+      "price": 1.23,
+      "unit": "lb"
+    }
+  },
+  {
+    "model": "website.product",
+    "pk": 4,
+    "fields": {
+      "name": "Processing byproduct (corn silk)",
+      "price": 14.73,
+      "unit": "ton"
+    }
+  },
+  {
+    "model": "website.product",
+    "pk": 5,
+    "fields": {
+      "name": "Harvest byproduct (compost)",
+      "price": 6.20,
+      "unit": "cu yd"
+    }
   }
 ]
