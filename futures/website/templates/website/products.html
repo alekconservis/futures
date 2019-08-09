@@ -22,9 +22,9 @@
             <td>${{ product.price }} / {{ product.unit }}</td>
             <td>
               {% if product.change >= 0 %}
-                <div><span style="color: green;font-size: 24px;"> ⌃ &nbsp;</span><span>{{ product.change }}</span></div>
+                <div><span style="color: green;"> ⌃ &nbsp;</span><span>{{ product.change }}</span></div>
               {% else %}
-                <div><span style="color: red;font-size: 24px;"> ˅ &nbsp;</span><span>{{ product.change }}</span></div>
+                <div><span style="color: red;"> ˅ &nbsp;</span><span>{{ product.change }}</span></div>
               {% endif %}
             </td>
             <!-- <td>{{ product.expires_at }}</td> -->
@@ -48,13 +48,5 @@
       No available products found.
     </div>
   {% endif %}
-
-  <script>
-    var el = document.getElementById('price');
-    setInterval(function(){
-            document.location =window.location.href;
-    }, 1500);
-  </script>
-
 {% endblock %}
 
