@@ -15,11 +15,9 @@ def login_view(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print('-- user authenticated')
             login(request, user)
             return redirect('product_list')
         else:
-            print('-- not authenticated')
             return render(request, 'website/login.html',
                         {"info": "Invalid username and password combination."})
     else:

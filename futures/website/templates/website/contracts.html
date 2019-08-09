@@ -4,11 +4,11 @@
 <h2>Contracts</h2>
 
 {% if contract_list %}
-  <table>
+  <table class="table table-sm main-table">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Delivery Date</th>
+        <th scope="col">Product</th>
+        <th scope="col">Delivery Date</th>
       </tr>
     </thead>
     <tbody>
@@ -23,4 +23,7 @@
 {% else %}
   <p>No contracts found.</p>
 {% endif %}
+{% endblock %}
+
+{% block style %}
 {% endblock %}
