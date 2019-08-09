@@ -10,7 +10,7 @@
           <th scope="col">Name</th>
           <th scope="col">Market Price</th>
           <th scope="col">Change</th>
-          <th scope="col">Default Quantity</th>
+          <th scope="col">Quantity / Contract</th>
           <th scope="col">Actions</th>
           <th></th>
         </tr>
@@ -27,8 +27,8 @@
                 <div><span style="color: red;font-size: 24px;"> ˅ &nbsp;</span><span>{{ product.change }}</span></div>
               {% endif %}
             </td>
-            <td>{{ product.expires_at }}</td>
-            <td>{{ product.default_quantity }}</td>
+            <!-- <td>{{ product.expires_at }}</td> -->
+            <td>{{ product.default_quantity }} {{ product.unit }}</td>
             <td>
               <button type="button" class="table-button btn">
                 <a href="/products/{{ product.id }}/contracts/new">Create Contract</a>
