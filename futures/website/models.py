@@ -27,6 +27,7 @@ class Product(models.Model):
         # set PRICE to random value within certain range of original value
         offset = random.randrange(-50, 50, 1)
         self.price = self.price + round(Decimal(offset / 100), 2)
+        self.save()
 
 
 class Contract(models.Model):
