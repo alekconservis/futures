@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib import messages
 
@@ -25,15 +25,20 @@ def login_view(request):
           {"info": ""})
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
 def account(request):
     user = User.objects.get(pk=request.user.id)
     userContractsBought = Contract.objects.filter(buyer_id=user.id)
     userContractsSold = Contract.objects.filter(seller_id=user.id)
     bought_contracts_set = Contract.objects.filter(
-        buyer_id=user.id,
+        buyer_id=user.id, seller_id__isnull=False,
     )
     sold_contracts_set = Contract.objects.filter(
-        seller_id=user.id
+        seller_id=user.id, buyer_id__isnull=False,
     )
 
     return render(request, 'website/account.html', {
@@ -62,7 +67,7 @@ def products(request):
 def contracts(request):
     if request.method == "POST":
         contract = Contract(
-            # quantity = request.POST["quantity"],
+            quantity = request.POST["quantity"],
             price = request.POST["price"],
             end_date = request.POST["expires_at"],
             product_id = request.POST["product_id"],

@@ -38,9 +38,13 @@ class Contract(models.Model):
     seller = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name='sell_contracts')
     buyer = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name='buy_contracts')
     product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
+    quantity = models.IntegerField('quantity', default=0)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     description = models.CharField(max_length=255)
     end_date = models.DateField('maturity date')
+
+    def total_price(self):
+        return self.price * self.quantity
 
     def purchase_action(self):
         if self.buyer is None:
