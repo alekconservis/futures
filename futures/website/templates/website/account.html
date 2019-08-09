@@ -2,14 +2,9 @@
 
 {% block body %}
     <h2>Account Info</h2>
-    <table class="table table-sm">>
-        <tr>
-            <th scope="col">Username</th>
-            <td>{{ request.user.username }}</td>
-        </tr>
-        <tr>
-            <th   scope="col">cash_balance</th>
-            <td>{{ request.user.cash_balance }}</td>
-        </tr>
-    </table>
+    <p>Username: {{ request.user.username }}</p>
+    <p>cash_balance: {{ request.user.cash_balance }}</p>
+    <!-- <p>id: {{ request.user.id }}</p> -->
+    <p>Contracts Bought: {{ boughtContracts }}</p>
+    <p>Contracts Sold: {{ soldContracts }}</p>
 {% endblock %}
