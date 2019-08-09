@@ -9,7 +9,8 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Expiration</th>
-          <th scope="col">price</th>
+          <th scope="col">Price</th>
+          <th scope="col">Change</th>
           <th scope="col">Unit</th>
           <th scope="col">Default Quantity</th>
           <th>Actions</th>
@@ -21,7 +22,8 @@
           <tr>
             <td>{{ product.name }}</td>
             <td>{{ product.expires_at }}</td>
-            <td>{{ product.price }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.change }}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.default_quantity }}</td>
             <td><a href="/products/{{ product.id }}/contracts/new">Create Contract</a></td>
