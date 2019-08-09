@@ -1,7 +1,7 @@
 {% extends "website/base_template.html" %}
 
 {% block body %}
-<h1>Contracts</h1>
+<h1>Contracts{% if product %}: {{ product.name}}{% endif %}</h1>
 
 {% if contract_list %}
   <table class="table table-sm main-table">

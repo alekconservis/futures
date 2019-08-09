@@ -73,12 +73,16 @@ def contracts(request):
 
     else:
         product_id = request.GET.get('product', None)
+        product = None
+
         contract_list = Contract.objects.exclude(seller__isnull=False, buyer__isnull=False).order_by('-end_date')
         if product_id is not None:
             contract_list = contract_list.filter(product_id=product_id)
+            product = Product.objects.get(pk=product_id)
 
         return render(request, 'website/contracts.html', {
-            'contract_list': contract_list
+            'contract_list': contract_list,
+            'product': product
         })
 
 def create_contract(request, id):
