@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
-
+from django.contrib import messages
 from django.http import HttpResponse
 
 from .models import Product
@@ -77,4 +77,23 @@ def create_contract(request, id):
         'product': product,
     }
     return render(request, 'website/create_contract.html', context)
+
+def buy_contract(request, contract_id):
+    contract = Contract.objects.get(pk=contract_id)
+    user = User.objects.get(pk=request.user.id)
+
+    contract.price = contract.product.price
+
+    if contract.seller:
+        contract.buyer = user
+    else:
+        contract.seller = user
+
+    contract.save()
+
+    messages.add_message(request, messages.SUCCESS, 'Successfully Bought Contract!')
+
+    return redirect('contract_list')
+
+
 

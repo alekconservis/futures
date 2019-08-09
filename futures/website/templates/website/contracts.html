@@ -22,6 +22,9 @@
           <td>{{ contract.buyer }}</td>
           <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
+          <td>
+            <a href="{% url 'buy_contract' contract.id %}">Buy</a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
