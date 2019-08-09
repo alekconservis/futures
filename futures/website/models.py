@@ -39,3 +39,9 @@ class Contract(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     description = models.CharField(max_length=255)
     end_date = models.DateField('maturity date')
+
+    def purchase_action(self):
+        if self.buyer is None:
+            return 'Buy From Contract'
+        else:
+            return 'Sell To Contract'
