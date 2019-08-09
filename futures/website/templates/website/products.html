@@ -10,7 +10,7 @@
           <th scope="col">Name</th>
           <th scope="col">Market Price</th>
           <th scope="col">Change</th>
-          <th scope="col">Default Quantity</th>
+          <th scope="col">Quantity / Contract</th>
           <th scope="col">Actions</th>
           <th></th>
         </tr>
@@ -22,13 +22,13 @@
             <td>${{ product.price }} / {{ product.unit }}</td>
             <td>
               {% if product.change >= 0 %}
-                <div style="color: green;"><span>⌃</span><span>{{ product.change }}</span></div>
+                <div><span style="color: green;font-size: 24px;"> ⌃ &nbsp;</span><span>{{ product.change }}</span></div>
               {% else %}
-                <div style="color: red;"><span>˅</span><span>{{ product.change }}</span></div>
+                <div><span style="color: red;font-size: 24px;"> ˅ &nbsp;</span><span>{{ product.change }}</span></div>
               {% endif %}
             </td>
-            <td>{{ product.expires_at }}</td>
-            <td>{{ product.default_quantity }}</td>
+            <!-- <td>{{ product.expires_at }}</td> -->
+            <td>{{ product.default_quantity }} {{ product.unit }}</td>
             <td>
               <button type="button" class="table-button btn">
                 <a href="/products/{{ product.id }}/contracts/new">Create Contract</a>
@@ -43,10 +43,19 @@
         {% endfor %}
       </tbody>
     </table>
+    <div id="price"></div>
   {% else %}
     <div class="login-alert alert alert-danger" role="alert">
       No available products found.
     </div>
   {% endif %}
+
+  <script>
+    var el = document.getElementById('price');
+    setInterval(function(){
+            el.innerHTML = (Math.random()*100).toFixed(2);
+    }, 1500);
+  </script>
+
 {% endblock %}
 
