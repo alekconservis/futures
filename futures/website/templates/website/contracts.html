@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       {% for contract in contract_list %}
-        <tr>
+        <tr class="table-body">
           <td>{{ contract.product }}</td>
           <td>${{ contract.price }}</td>
           <td>{{ contract.buyer }}</td>
@@ -31,7 +31,9 @@
     </tbody>
   </table>
 {% else %}
-  <p>No available contracts found.</p>
+  <div class="login-alert alert alert-danger" role="alert">
+    No available contracts found.
+  </div>
 {% endif %}
 {% endblock %}
 

@@ -11,11 +11,11 @@ Creating contract for: <span>{{ product.name }} </span>
       <div class="form-group row">
           <label class="col-sm-2 col-form-label">Product Direction</label>
           <div class="form-check form-check-inline col-sm-2">
-          <input type="radio" class="form-check-input" id="typeBuy" name="type" value="buy"/>
+          <input type="radio" class="form-check-input" id="typeBuy" name="type" value="buy" required/>
           <label class="form-check-label" for="typeBuy">Receive</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" class="form-check-input" id="typeSell" name="type" value="sell"/>
+          <input type="radio" class="form-check-input" id="typeSell" name="type" value="sell" required/>
           <label class="form-check-label" for="typeSell">Deliver</label>
         </div>
       </div>
@@ -40,7 +40,7 @@ Creating contract for: <span>{{ product.name }} </span>
       <div class="form-group row">
           <label for="inputExpy" class="col-sm-2 col-form-label">Expiration</label>
           <div class="col-sm-4">
-            <input type="date" class="form-control" name="expires_at" id="inputExpy" value=""/>
+            <input type="date" class="form-control" name="expires_at" id="inputExpy" value="" required/>
           </div>
       </div>
       <input type="hidden" name="product_id" value="{{ product.id }}"/>

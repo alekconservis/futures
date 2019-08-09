@@ -9,28 +9,41 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Expiration</th>
-          <th scope="col">price</th>
+          <th scope="col">Price</th>
+          <th scope="col">Change</th>
           <th scope="col">Unit</th>
           <th scope="col">Default Quantity</th>
-          <th>Actions</th>
+          <th scope="col">Actions</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         {% for product in product_list %}
-          <tr>
+          <tr class="table-body">
             <td>{{ product.name }}</td>
             <td>{{ product.expires_at }}</td>
-            <td>{{ product.price }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.change }}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.default_quantity }}</td>
-            <td><a href="/products/{{ product.id }}/contracts/new">Create Contract</a></td>
-            <td><a href="{% url 'contract_list'  %}?product={{ product.id }}">View Contracts</a></td>
+            <td>
+              <button type="button" class="table-button btn">
+                <a href="/products/{{ product.id }}/contracts/new">Create Contract</a>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="table-button btn">
+                <a href="{% url 'contract_list'  %}?product={{ product.id }}">View Contracts</a>
+              </button>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
-    <p>No products found.</p>
+    <div class="login-alert alert alert-danger" role="alert">
+      No available products found.
+    </div>
   {% endif %}
 {% endblock %}
+
