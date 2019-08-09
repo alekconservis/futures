@@ -26,7 +26,9 @@ class Product(models.Model):
     def fluctuate(self):
         # set PRICE to random value within certain range of original value
         offset = random.randrange(-50, 50, 1)
+        previous_price = self.price
         self.price = self.price + round(Decimal(offset / 100), 2)
+        self.change = self.price - previous_price
         self.save()
 
 
