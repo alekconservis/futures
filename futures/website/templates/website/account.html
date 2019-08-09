@@ -2,13 +2,13 @@
 
 {% block body %}
     <h2>Account Info</h2>
-    <table style="border-collapse: collapse;">
+    <table class="table table-sm">>
         <tr>
-            <td>Username</td>
+            <th scope="col">Username</th>
             <td>{{ request.user.username }}</td>
         </tr>
         <tr>
-            <td>cash_balance</td>
+            <th   scope="col">cash_balance</th>
             <td>{{ request.user.cash_balance }}</td>
         </tr>
     </table>
