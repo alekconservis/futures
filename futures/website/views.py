@@ -61,9 +61,11 @@ def buy_contract(request, contract_id):
     else:
         contract.seller = user
 
+    contract.save()
+
     messages.add_message(request, messages.SUCCESS, 'Successfully Bought Contract!')
 
-    return redirect(request, 'contract_list')
+    return redirect('contract_list')
 
 
 
