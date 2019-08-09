@@ -39,7 +39,7 @@ def account(request):
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'website/index.html')
 
 
 def products(request):
