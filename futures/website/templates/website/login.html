@@ -1,20 +1,47 @@
 {% extends "website/base_template.html" %}
 
-{% block nav_bar %}{% endblock %}
-
 {% block body %}
-<div class="card card-body" style="max-width: 20rem;">
-    <h4 class="card-title">Login</h4>
+<div class="card-sizing">
     <form name="login-form" method="post" style="width: 100%;">
         {% csrf_token %}
-        Username:<br>
-        <input name="username" type="text" style="width: 100%;"><br>
-        Password:<br>
-        <input name="password" type="password" style="width: 100%;"><br>
-        <br>
-        <input class="btn btn-primary" type="submit" value="Login" style="width: 100%;">
+        <input placeholder="Username" class="login-field" name="username" type="text" style="width: 100%;"><br>
+        <input placeholder="Password" class="login-field" name="password" type="password" style="width: 100%;"><br>
+        <input class="login-button btn" type="submit" value="Login">
     </form>
-    <p>info:</p>
-    <p>{{ info }}</p>
+    {% if info %}
+        <div class="login-alert alert alert-danger" role="alert">
+            {{ info }}
+        </div>
+    {% else %}
+    {% endif %}
 </div>
+{% endblock %}
+
+{% block style %}
+    <style>
+        .card-sizing {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .login-field {
+            margin-bottom: 20px;
+        }
+        .login-button {
+            background-color: #DDCF93;
+            width: 100%;
+        }
+        .login-button:hover {
+            background-color: #9BCC9E;
+        }
+        .login-button:focus {
+            background-color: #F61067;
+        }
+        .login-alert{
+            margin-top: 20px;
+        }
+    </style>
 {% endblock %}
