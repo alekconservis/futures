@@ -43,10 +43,19 @@
         {% endfor %}
       </tbody>
     </table>
+    <div id="price"></div>
   {% else %}
     <div class="login-alert alert alert-danger" role="alert">
       No available products found.
     </div>
   {% endif %}
+
+  <script>
+    var el = document.getElementById('price');
+    setInterval(function(){
+            el.innerHTML = (Math.random()*100).toFixed(2);
+    }, 1500);
+  </script>
+
 {% endblock %}
 
