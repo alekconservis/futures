@@ -22,9 +22,9 @@
             <td>${{ product.price }} / {{ product.unit }}</td>
             <td>
               {% if product.change >= 0 %}
-                <div style="color: green;"><span>⌃</span><span>{{ product.change }}</span></div>
+                <div><span style="color: green;font-size: 24px;"> ⌃ &nbsp;</span><span>{{ product.change }}</span></div>
               {% else %}
-                <div style="color: red;"><span>˅</span><span>{{ product.change }}</span></div>
+                <div><span style="color: red;font-size: 24px;"> ˅ &nbsp;</span><span>{{ product.change }}</span></div>
               {% endif %}
             </td>
             <td>{{ product.expires_at }}</td>
