@@ -10,9 +10,7 @@
           <th scope="col">Name</th>
           <th scope="col">Market Price</th>
           <th scope="col">Change</th>
-          <th scope="col">Expiration</th>
           <th scope="col">Default Quantity</th>
-          <th scope="col">Unit</th>
           <th scope="col">Actions</th>
           <th></th>
         </tr>
@@ -21,11 +19,9 @@
         {% for product in product_list %}
           <tr class="table-body">
             <td class="product-name">{{ product.name }}</td>
-            <td>${{ product.price }}</td>
+            <td>${{ product.price }} / {{ product.unit }}</td>
             <td>{{ product.change }}</td>
-            <td>{{ product.expires_at }}</td>
             <td>{{ product.default_quantity }}</td>
-            <td>{{ product.unit }}</td>
             <td>
               <button type="button" class="table-button btn">
                 <a href="/products/{{ product.id }}/contracts/new">Create Contract</a>
