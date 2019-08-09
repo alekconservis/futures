@@ -1,19 +1,32 @@
 <h2>Create Contract</h2>
 
 {% if product %}
-  <form method="POST" action="/contracts">
-    {% csrf_token %}
-    <input type="radio" name="type" value="buy"/> Buy
-    <input type="radio" name="type" value="sell"/> Sell
-    <br/>
-    Quantity: <input type="number" name="quantity" value=""/>
-    <br/>
-    Expiration: <input type="text" name="expires_at" value=""/>
-    <input type="hidden" name="product_id" value="{{ product.id }}"/>
-    <input type="hidden" name="price" value="{{ product.price }}"/>
-    <br/>
-    <button name="submit">Submit</button>
-  </form>
+  <table>
+    <form method="POST" action="/contracts">
+      {% csrf_token %}
+      <tr>
+        <td><input type="radio" name="type" value="buy"/> Buy</td>
+        <td><input type="radio" name="type" value="sell"/> Sell</td>
+      </tr>
+
+      <tr>
+        <td>Quantity </td>
+        <td><input type="number" name="quantity" value=""/></td>
+      </tr>
+
+      <tr>
+        <td>Expiration </td>
+        <td><input type="text" name="expires_at" value=""/></td>
+      </tr>
+      <input type="hidden" name="product_id" value="{{ product.id }}"/>
+      <input type="hidden" name="price" value="{{ product.price }}"/>
+
+      <tr>
+        <td><button name="submit">Submit</button></td>
+      </tr>
+
+    </form>
+  </table>
 {% else %}
   <p>Oops!</p>
 {% endif %}
