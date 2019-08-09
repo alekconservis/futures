@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.contrib import messages
 
@@ -23,6 +23,11 @@ def login_view(request):
     else:
         return render(request, 'website/login.html',
           {"info": ""})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 
 def account(request):
