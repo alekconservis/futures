@@ -35,10 +35,10 @@ def account(request):
     userContractsBought = Contract.objects.filter(buyer_id=user.id)
     userContractsSold = Contract.objects.filter(seller_id=user.id)
     bought_contracts_set = Contract.objects.filter(
-        buyer_id=user.id,
+        buyer_id=user.id, seller_id__isnull=False,
     )
     sold_contracts_set = Contract.objects.filter(
-        seller_id=user.id
+        seller_id=user.id, buyer_id__isnull=False,
     )
 
     return render(request, 'website/account.html', {
