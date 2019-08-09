@@ -12,6 +12,7 @@
           <th scope="col">price</th>
           <th scope="col">Unit</th>
           <th scope="col">Default Quantity</th>
+          <th>Actions</th>
           <th></th>
         </tr>
       </thead>
@@ -23,7 +24,8 @@
             <td>{{ product.price }}</td>
             <td>{{ product.unit }}</td>
             <td>{{ product.default_quantity }}</td>
-            <td><a href="/products/{{ product.id }}/contracts/new">[ + ]</a></td>
+            <td><a href="/products/{{ product.id }}/contracts/new">Create Contract</a></td>
+            <td><a href="{% url 'contract_list'  %}?product={{ product.id }}">View Contracts</a></td>
           </tr>
         {% endfor %}
       </tbody>

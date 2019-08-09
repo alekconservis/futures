@@ -4,8 +4,8 @@
 <div class="card-sizing">
     <form name="login-form" method="post" style="width: 100%;">
         {% csrf_token %}
-        <input placeholder="Username" class="login-field" name="username" type="text" style="width: 100%;"><br>
-        <input placeholder="Password" class="login-field" name="password" type="password" style="width: 100%;"><br>
+        <input placeholder="Username" class="text-field" name="username" type="text" style="width: 100%;"><br>
+        <input placeholder="Password" class="text-field" name="password" type="password" style="width: 100%;"><br>
         <input class="ttc-button btn btn-primary" style="width: 100%;" type="submit" value="Login">
     </form>
     {% if info %}
@@ -26,9 +26,6 @@
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-        }
-        .login-field {
-            margin-bottom: 20px;
         }
         .login-alert {
             margin-top: 20px;
