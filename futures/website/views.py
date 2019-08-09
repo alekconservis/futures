@@ -79,8 +79,10 @@ def contracts(request):
         return render(request, 'website/contracts.html', context)
 
 def create_contract(request, id):
+    product_list = Product.objects.order_by('-name')
     product = Product.objects.get(pk=id)
     context = {
+        'product_list': product_list,
         'product': product,
     }
     return render(request, 'website/create_contract.html', context)

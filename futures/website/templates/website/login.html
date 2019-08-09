@@ -6,7 +6,7 @@
         {% csrf_token %}
         <input placeholder="Username" class="login-field" name="username" type="text" style="width: 100%;"><br>
         <input placeholder="Password" class="login-field" name="password" type="password" style="width: 100%;"><br>
-        <input class="login-button btn" type="submit" value="Login">
+        <input class="ttc-button btn btn-primary" style="width: 100%;" type="submit" value="Login">
     </form>
     {% if info %}
         <div class="login-alert alert alert-danger" role="alert">
@@ -30,17 +30,7 @@
         .login-field {
             margin-bottom: 20px;
         }
-        .login-button {
-            background-color: #DDCF93;
-            width: 100%;
-        }
-        .login-button:hover {
-            background-color: #9BCC9E;
-        }
-        .login-button:focus {
-            background-color: #F61067;
-        }
-        .login-alert{
+        .login-alert {
             margin-top: 20px;
         }
     </style>

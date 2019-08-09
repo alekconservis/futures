@@ -1,7 +1,7 @@
 {% extends "website/base_template.html" %}
 
 {% block body %}
-<h2>Contracts</h2>
+<h1>Contracts</h1>
 
 {% if contract_list %}
   <table class="table table-sm main-table">
@@ -12,7 +12,7 @@
         <th scope="col">Buyer</th>
         <th scope="col">Seller</th>
         <th scope="col">Delivery Date</th>
-        <th scope="col"></th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
           <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
           <td>
-            <a href="{% url 'buy_contract' contract.id %}">Buy</a>
+            <a href="{% url 'buy_contract' contract.id %}">{{ contract.purchase_action }}</a>
           </td>
         </tr>
       {% endfor %}
@@ -36,5 +36,4 @@
 {% endblock %}
 
 {% block style %}
-
 {% endblock %}

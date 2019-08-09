@@ -7,16 +7,28 @@
     <form method="POST" action="/contracts">
       {% csrf_token %}
       <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Contract Type</label>
+          <label class="col-sm-2 col-form-label">Product Direction</label>
           <div class="form-check form-check-inline col-sm-2">
           <input type="radio" class="form-check-input" id="typeBuy" name="type" value="buy"/>
-          <label class="form-check-label" for="typeBuy">Buy</label>
+          <label class="form-check-label" for="typeBuy">Receive</label>
         </div>
         <div class="form-check form-check-inline">
           <input type="radio" class="form-check-input" id="typeSell" name="type" value="sell"/>
-          <label class="form-check-label" for="typeSell">Sell</label>
+          <label class="form-check-label" for="typeSell">Deliver</label>
         </div>
       </div>
+      <!--
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputProduct">Product</label>
+        <div class="col-sm-4">
+          <select class="form-control" id="inputProduct">
+            {% for p in product_list %}
+              <option value="{{ p.id }}">{{ p.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      -->
       <div class="form-group row">
         <label for="inputQty" class="col-sm-2 col-form-label">Quantity</label>
         <div class="col-sm-4">
@@ -34,7 +46,7 @@
       <div class="form-group row">
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
-          <button name="submit" class="btn btn-primary">Submit</button>
+          <button name="submit" class="ttc-button btn btn-primary">Submit</button>
         </div>
       </div>
     </form>
