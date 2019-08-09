@@ -4,7 +4,7 @@
   <h2>Create Contract</h2>
 
   {% if product %}
-Creating contract for: <p>{{ product.name }} </p>
+Creating contract for: <span>{{ product.name }} </span>
 
     <form method="POST" action="/contracts">
       {% csrf_token %}
