@@ -12,6 +12,7 @@
         <th scope="col">Buyer</th>
         <th scope="col">Seller</th>
         <th scope="col">Delivery Date</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -22,12 +23,15 @@
           <td>{{ contract.buyer }}</td>
           <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
+          <td>
+            <a href="{% url 'buy_contract' contract.id %}">Buy</a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
 {% else %}
-  <p>No contracts found.</p>
+  <p>No available contracts found.</p>
 {% endif %}
 {% endblock %}
 

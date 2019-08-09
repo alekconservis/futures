@@ -19,7 +19,7 @@
 
     {% block nav_bar %}
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Tra$$$h</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,9 +49,15 @@
     {% endblock %}
 
     <div style="margin-top: 100px;" class="container">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
 
-        {% block body %}{% endblock %}
-
+      {% block body %}{% endblock %}
     </div>
 
     <!-- Bootstrap core JavaScript

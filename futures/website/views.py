@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
-
+from django.contrib import messages
 from django.http import HttpResponse
+from django.db.models import Q
 
 from .models import Product
 from .models import Contract
@@ -27,7 +28,14 @@ def login_view(request):
 
 
 def account(request):
-    return render(request, 'website/account.html')
+    user = User.objects.get(pk=request.user.id)
+    userContractsBought = Contract.objects.filter(buyer_id=user.id)
+    userContractsSold = Contract.objects.filter(seller_id=user.id)
+
+    return render(request, 'website/account.html', {
+        'boughtContracts': userContractsBought.count(),
+        'soldContracts': userContractsSold.count()
+    })
 
 
 def index(request):
@@ -64,12 +72,11 @@ def contracts(request):
         return redirect("contract_list")
 
     else:
-        contract_list = Contract.objects.order_by('-end_date')
+        contract_list = Contract.objects.exclude(seller__isnull=False, buyer__isnull=False).order_by('-end_date')
         context = {
             'contract_list': contract_list
         }
         return render(request, 'website/contracts.html', context)
-
 
 def create_contract(request, id):
     product = Product.objects.get(pk=id)
@@ -77,4 +84,23 @@ def create_contract(request, id):
         'product': product,
     }
     return render(request, 'website/create_contract.html', context)
+
+def buy_contract(request, contract_id):
+    contract = Contract.objects.get(pk=contract_id)
+    user = User.objects.get(pk=request.user.id)
+
+    contract.price = contract.product.price
+
+    if contract.seller:
+        contract.buyer = user
+    else:
+        contract.seller = user
+
+    contract.save()
+
+    messages.add_message(request, messages.SUCCESS, 'Successfully Bought Contract!')
+
+    return redirect('contract_list')
+
+
 
