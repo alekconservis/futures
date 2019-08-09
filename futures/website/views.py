@@ -29,10 +29,18 @@ def account(request):
     user = User.objects.get(pk=request.user.id)
     userContractsBought = Contract.objects.filter(buyer_id=user.id)
     userContractsSold = Contract.objects.filter(seller_id=user.id)
+    bought_contracts_set = Contract.objects.filter(
+        buyer_id=user.id,
+    )
+    sold_contracts_set = Contract.objects.filter(
+        seller_id=user.id
+    )
 
     return render(request, 'website/account.html', {
         'boughtContracts': userContractsBought.count(),
-        'soldContracts': userContractsSold.count()
+        'soldContracts': userContractsSold.count(),
+        'boughtContractSet': bought_contracts_set,
+        'soldContractSet': sold_contracts_set,
     })
 
 

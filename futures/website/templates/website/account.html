@@ -7,4 +7,66 @@
     <!-- <p>id: {{ request.user.id }}</p> -->
     <p>Contracts Bought: {{ boughtContracts }}</p>
     <p>Contracts Sold: {{ soldContracts }}</p>
+    <br>
+    <h1>Bought Contracts</h1>
+    {% if boughtContractSet %}
+        <table class="table table-sm main-table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Buyer</th>
+            <th scope="col">Seller</th>
+            <th scope="col">Delivery Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contract in boughtContractSet %}
+            <tr class="table-body">
+              <td class="product-name">{{ contract.product }}</td>
+              <td>${{ contract.price }}</td>
+              <td>{{ contract.buyer }}</td>
+              <td>{{ contract.seller }}</td>
+              <td>{{ contract.end_date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+        <div class="login-alert alert alert-danger" role="alert">
+            You have not bought any contracts.
+        </div>
+    {% endif %}
+
+    <h1>Sold Contracts</h1>
+    {% if soldContractSet %}
+        <table class="table table-sm main-table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Buyer</th>
+            <th scope="col">Seller</th>
+            <th scope="col">Delivery Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contract in soldContractSet %}
+            <tr class="table-body">
+              <td class="product-name">{{ contract.product }}</td>
+              <td>${{ contract.price }}</td>
+              <td>{{ contract.buyer }}</td>
+              <td>{{ contract.seller }}</td>
+              <td>{{ contract.end_date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+        <div class="login-alert alert alert-danger" role="alert">
+            You have not sold any contracts.
+        </div>
+    {% endif %}
+    <br>
+    <br>
 {% endblock %}
