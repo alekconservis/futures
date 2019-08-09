@@ -4,17 +4,23 @@
 <h2>Contracts</h2>
 
 {% if contract_list %}
-  <table>
+  <table class="table table-sm main-table">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Delivery Date</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Buyer</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Delivery Date</th>
       </tr>
     </thead>
     <tbody>
       {% for contract in contract_list %}
         <tr>
           <td>{{ contract.product }}</td>
+          <td>${{ contract.price }}</td>
+          <td>{{ contract.buyer }}</td>
+          <td>{{ contract.seller }}</td>
           <td>{{ contract.end_date }}</td>
           <td>
             <a href="{% url 'buy_contract' contract.id %}">Buy</a>
@@ -26,4 +32,7 @@
 {% else %}
   <p>No contracts found.</p>
 {% endif %}
+{% endblock %}
+
+{% block style %}
 {% endblock %}

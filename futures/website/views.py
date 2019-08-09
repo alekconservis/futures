@@ -16,15 +16,14 @@ def login_view(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print('-- user authenticated')
             login(request, user)
             return redirect('product_list')
         else:
-            print('-- not authenticated')
-            return render(request, 'website/login.html', {"info": "Invalid username and password combination."})
+            return render(request, 'website/login.html',
+                        {"info": "Invalid username and password combination."})
     else:
-        print('- get')
-        return render(request, 'website/login.html', {"info": "Please login."})
+        return render(request, 'website/login.html',
+          {"info": "Please login."})
 
 
 def account(request):
@@ -36,7 +35,10 @@ def index(request):
 
 
 def products(request):
-    product_list = Product.objects.order_by('-expires_at')[:5]
+    product_list = Product.objects.order_by('-name')
+    for product in product_list:
+        # randomize product prices
+        product.fluctuate()
     context = {
         'product_list': product_list,
     }
@@ -44,11 +46,37 @@ def products(request):
 
 
 def contracts(request):
-    contract_list = Contract.objects.order_by('-end_date')[:5]
+    if request.method == "POST":
+        contract = Contract(
+            # quantity = request.POST["quantity"],
+            price = request.POST["price"],
+            end_date = request.POST["expires_at"],
+            product_id = request.POST["product_id"],
+        )
+
+        user = User.objects.get(id=request.user.id)
+        if request.POST["type"] == "buy":
+            contract.buyer = user
+        else:
+            contract.seller = user
+
+        contract.save()
+        return redirect("contract_list")
+
+    else:
+        contract_list = Contract.objects.order_by('-end_date')
+        context = {
+            'contract_list': contract_list
+        }
+        return render(request, 'website/contracts.html', context)
+
+
+def create_contract(request, id):
+    product = Product.objects.get(pk=id)
     context = {
-        'contract_list': contract_list
+        'product': product,
     }
-    return render(request, 'website/contracts.html', context)
+    return render(request, 'website/create_contract.html', context)
 
 def buy_contract(request, contract_id):
     contract = Contract.objects.get(pk=contract_id)
